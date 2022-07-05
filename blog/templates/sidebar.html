@@ -1,0 +1,26 @@
+
+{% block sidebar %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.7.0/htmx.min.js" integrity="sha512-etqA0KankuxrlSeZDYycQBY/D/KWZn0YZjlsjAo7kCEBTy1gg+DwmR6icxtOpqDBOzm2P00/lSIXEu7K+zvNsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="right" id="currency" hx-get="/get_currency/" hx-trigger="every 1s" hx-swap="innherhtml"></div>
+
+<div class="col">
+<div class="card my-4" style="text-align: center;">
+        <h5 class="card-header">About Us</h5>
+    <div class="card-body">
+        <p class="card-text"> nothing - what are you looking for ?</p>
+        <a href="https://djangocentral.com/building-a-blog-application-with-django"
+           class="btn btn-danger">Know more!</a>
+    </div>
+    <strong><p style="color : green;">BITCOIN: {{ usd|floatformat:"2" }}</p></strong>
+</div>
+</div>
+
+{% endblock sidebar %}

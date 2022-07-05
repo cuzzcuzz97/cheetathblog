@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: white;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px ;
+    }
+</style>
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col mx-auto" style="background-image: url('https://i.postimg.cc/m2VnCYb4/chet.png');background-position: right;background-size: contain;background-repeat: no-repeat;">
+                <div class="site-heading ">
+                    <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to Crypto blog</h3>
+                    <p class="text-light">Find your love here with us ..! &nbsp
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col"  id="currency" hx-get="/get_currency/" hx-trigger="every 1s" hx-swap="innherhtml">
+            {% include 'sidebar.html' %}
+            </div>
+        <div class="col-md-8 mt-3">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body bg-image img-fluid" style="">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- {% block sidebar %}  {% endblock sidebar %} -->
+    </div>
+</div>
+{%endblock%}
